@@ -1,0 +1,79 @@
+/* Фон сайту */
+.fon{
+    background: linear-gradient(90deg, #ff7e5f, #feb47b);
+    display: grid;
+    place-items: center; /* Центрування по горизонталі та вертикалі */
+    height: 100vh;
+    margin: 0;
+}
+
+/* Перша частина */
+.one_set{
+    font-family: 'Orbitron';
+    font-size: 22px;
+}
+
+/* .block_one{
+
+} */
+
+.image_static{
+    transform: scale(0.5); /* Зменшення до 50% від початкового розміру */
+}
+
+
+/* Друга частина */
+/* .two_set{
+
+}
+
+.stuck_one{
+
+}
+
+.stuck_two{
+
+} */
+
+/* Третя частина */
+/* .three_set{
+
+}
+
+.stuck_three{
+
+} */
+
+/* Четветра частина */
+/* .four_set{
+
+}
+
+.stuck_four_person{
+
+}
+
+.stuck_four{
+
+} */
+
+/* П'ята частина */
+/* .finsh{
+
+}
+
+.image{
+
+}
+
+.image_two{
+
+}
+
+.stuck_five{
+
+}
+
+.finilin{
+
+} */

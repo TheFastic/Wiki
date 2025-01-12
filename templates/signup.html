@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename = 'stil.css')}}">
+    <title>GameWiki</title>
+</head>
+<body>
+    
+    <!-- {% include 'base.html' %} -->
+    <div class="fon">
+        <h1>Sign up</h1>
+        <form method="post">
+
+            <p>Name: <input type="text" id = "login" name="login"></p>
+            <br>
+            <p>Password: <input type="password" id = "password" name="password"></p>
+            <br>
+            <p>Confirm password: <input type="password" id = "confirm_password" name="confirm_password"></p>
+            <br>
+            <button type="submit">Registretion</button>
+            
+        </form>
+    </div>
+
+</body>
+</html>
