@@ -1,254 +1,327 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{url_for('static', filename = 'stil.css')}}">
-    <title>GameWiki</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{{url_for('static', filename = 'stil.css')}}"/>
+    <link rel="stylesheet" href="{{url_for('static', filename = 'modern-normalize.css')}}"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500&display=swap:
+    ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet"/>
+    <title>GameWik</title>
+  </head>
+  <body>
+    <header>
+      <!-- Меню та вхід -->
+      <div class="header container">
+          <div class="block_one">
+            <nav class="nav-block">
+                <ul class="nav-list">
+                    <li class="nav-link">
+                        <a href="{{ url_for('index') }}" class="header-text"> Game </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="{{ url_for('index') }}" class="header-text"> News </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="{{ url_for('index') }}" class="header-text"> Quests </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="{{ url_for('index') }}" class="header-text"> Updates </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="{{ url_for('index') }}" class="header-text"> Misc </a>
+                    </li>
+                </ul>
+            </nav>
+          </div>
+          <div class="block_tue">
+            <ul class="btn-list">
+                {% if session.get('login') %}
+                <span>{{ session['login'] }}</span>
+                <li class="btn-logut">
+                    <a href="{{ url_for('logout') }}" class="header-btn-log"> Sign out </a>
+                </li>
+                {% else %}
+                <div class="block"> 
+                  <li class="btn-login">
+                      <a href="{{ url_for('login') }}" class="header-btn-log"> Sign in </a>
+                  </li>
+                  <li class="btn-sign">
+                      <a href="{{ url_for('signup') }}" class="header-btn-sign"> Register </a>
+                  </li>
+                </div> 
+                {% endif %} 
+            </ul>
+          </div>
+      </div>
+    </header>
 
-<div class="fon">
 
-                                                                           <!-- Меню та вхід -->
-    <div class="one_set">
-     
-        <div class="block_one">
-            <a href="{{ url_for('index') }}"> Game </a>
+    <!-- <section>
+      <div class="two_set container">
+        <img src="{{url_for('static', filename = 'img/image.png')}}" alt="logo" class="image_log"/>
+        <p><input type="text" placeholder="Search" /></p>
 
-            <a href="{{ url_for('index') }}"> News </a>
-
-            <a href="{{ url_for('index') }}"> Quests </a>
-
-            <a href="{{ url_for('index') }}"> Updates </a>
-
-            <a href="{{ url_for('index') }}"> Misc </a>
-        </div>
-
-        {% if session.get('login') %}
-
-        <span>{{ session['login'] }}</span>
-        <a href="{{ url_for('logout') }}"> Sign out </a>
-
-        {% else %}
-        <a href="{{ url_for('login') }}"> Sign in </a>
-        <a href="{{ url_for('signup') }}"> Register </a>
-
-        {% endif %}
-
-        <img src="{{url_for('static', filename = 'img/image.png')}}" alt="logo" class="image_static">
-         
-    </div>
-
-                                                                       <!-- Пошук та топи пошуку -->
-    <div class="two_set">
-
-        <!-- Пошук -->
-        <p><input type="text" placeholder="Search"></p>
-
-        <!-- Список оновлень і тощо -->
         <ul class="stuck_one">
-            <li>
-                <img src="{{url_for('static', filename = 'img/game4.png')}}" alt="logo">
-                <h3>Game</h3>
-                <p>Genshin Impact: 
-                    Is an open-world action RPG</p>
-            </li>
-            <li>
-                <img src="{{url_for('static', filename = 'img/game3.png')}}" alt="logo">
-                <h3>Game</h3>
-                <p>The First Descendant: 
-                    MMORPG</p>
-            </li>
-            <li>
-                <img src="{{url_for('static', filename = 'img/game2.png')}}" alt="logo">
-                <h3>News</h3>
-                <p>S.T.A.L.K.E.R. 2: Heart of Chornobyl:
-                    20th November, 2024</p>
-            </li>
-            <li>
-                <img src="{{url_for('static', filename = 'img/game4.png')}}" alt="logo">
-                <h3>Updates</h3>
-                <p>Genshin Impact: 
-                    Updates 5.1</p>
-            </li>
-            <li>
-                <img src="{{url_for('static', filename = 'img/game1.png')}}" alt="logo">
-                <h3>Game</h3>
-                <p>Cyberpunk 2077:
-                    A game with an open world and story</p>
-            </li>
+          <li>
+            <img
+              src="{{url_for('static', filename = 'img/game4.png')}}"
+              alt="logo"
+            />
+            <h3>Game</h3>
+            <p>Genshin Impact: Is an open-world action RPG</p>
+          </li>
+          <li>
+            <img
+              src="{{url_for('static', filename = 'img/game3.png')}}"
+              alt="logo"
+            />
+            <h3>Game</h3>
+            <p>The First Descendant: MMORPG</p>
+          </li>
+          <li>
+            <img
+              src="{{url_for('static', filename = 'img/game2.png')}}"
+              alt="logo"
+            />
+            <h3>News</h3>
+            <p>S.T.A.L.K.E.R. 2: Heart of Chornobyl: 20th November, 2024</p>
+          </li>
+          <li>
+            <img
+              src="{{url_for('static', filename = 'img/game4.png')}}"
+              alt="logo"
+            />
+            <h3>Updates</h3>
+            <p>Genshin Impact: Updates 5.1</p>
+          </li>
+          <li>
+            <img
+              src="{{url_for('static', filename = 'img/game1.png')}}"
+              alt="logo"
+            />
+            <h3>Game</h3>
+            <p>Cyberpunk 2077: A game with an open world and story</p>
+          </li>
         </ul>
 
-        <!-- Топ пошуку на сайті -->
         <h3>Top wiki</h3>
         <ul class="stuck_two">
-            <h3>Game</h3>
-            <li>
-                <p>Maincraft</p>
-                <p>Genshin Impact</p>
-                <p>Baldur's Gate 3</p>
-            </li>
-            <h3>News</h3>
-            <li>
-                <p>Blue Protocol</p>
-                <p>The Parasites</p>
-                <p>S.T.A.L.K.E.R. 2</p>
-            </li>
-            <h3>Quests</h3>
-            <li>
-                <p>Genshin Impact</p>
-                <p>Cyberpunk 2077</p>
-                <p>Warframe</p>
-            </li>
-            <h3>Updates</h3>
-            <li>
-                <p>DayZ</p>
-                <p>Rust</p>
-                <p>Counter-Strike 2</p>
-            </li>
-            <h3>Misc</h3>
-            <li>
-                <p>Resource</p>
-                <p>Rare items</p>
-                <p>Unique mobs</p>
-            </li>
+          <h3>Game</h3>
+          <li>
+            <p>Maincraft</p>
+            <p>Genshin Impact</p>
+            <p>Baldur's Gate 3</p>
+          </li>
+          <h3>News</h3>
+          <li>
+            <p>Blue Protocol</p>
+            <p>The Parasites</p>
+            <p>S.T.A.L.K.E.R. 2</p>
+          </li>
+          <h3>Quests</h3>
+          <li>
+            <p>Genshin Impact</p>
+            <p>Cyberpunk 2077</p>
+            <p>Warframe</p>
+          </li>
+          <h3>Updates</h3>
+          <li>
+            <p>DayZ</p>
+            <p>Rust</p>
+            <p>Counter-Strike 2</p>
+          </li>
+          <h3>Misc</h3>
+          <li>
+            <p>Resource</p>
+            <p>Rare items</p>
+            <p>Unique mobs</p>
+          </li>
         </ul>
-    </div>
+      </div>
+    </section> -->
 
-                                                                            <!-- Новини -->
-    <div class="three_set">
+    <!-- <section>
+      <div class="three_set container">
         <h2>News</h2>
         <ul class="stuck_three">
-            <li>
-                <h3>S.T.L.K.E.R 2: HEART OF CORNOBYL:</h3>
-                <p>S.T.A.L.K.E.R. 2: 
-                    Heart of Chornobyl is an upcoming first-person shooter and survival horror video game developed by GSC Game World and the fourth installment in the S.T.A.L.K.E.R.series. 
-                    Release date: 20th November, 2024</p>
-            </li>
-            <img src="{{url_for('static', filename = 'img/image5.png')}}" alt="logo">
-            <li>
-                <h3>The Parasites:</h3>
-                <p>The Parasites - This is a simulator of survival in an open world, the action of which unfolds in an abandoned corner, after the fall of a giant meteorite.
-                    Release date: It is unknown</p>
-            </li>
-            <img src="{{url_for('static', filename = 'img/image4.png')}}" alt="logo">
-            <li>
-                <h3>BLUE PROTOCOL:</h3>
-                <p>Blue Protocol is an upcoming action MMORPG developed by Bandai Namco Entertainment, featuring vibrant, anime-inspired graphics and fast-paced combat.
-                    Release date: global release in Q4 2024</p>
-            </li>
-            <img src="{{url_for('static', filename = 'img/image3.png')}}" alt="logo">
+          <li>
+            <h3>S.T.L.K.E.R 2: HEART OF CORNOBYL:</h3>
+            <p>
+              S.T.A.L.K.E.R. 2: Heart of Chornobyl is an upcoming first-person
+              shooter and survival horror video game developed by GSC Game World
+              and the fourth installment in the S.T.A.L.K.E.R.series. Release
+              date: 20th November, 2024
+            </p>
+          </li>
+          <img
+            src="{{url_for('static', filename = 'img/image5.png')}}"
+            alt="logo"
+          />
+          <li>
+            <h3>The Parasites:</h3>
+            <p>
+              The Parasites - This is a simulator of survival in an open world,
+              the action of which unfolds in an abandoned corner, after the fall
+              of a giant meteorite. Release date: It is unknown
+            </p>
+          </li>
+          <img
+            src="{{url_for('static', filename = 'img/image4.png')}}"
+            alt="logo"
+          />
+          <li>
+            <h3>BLUE PROTOCOL:</h3>
+            <p>
+              Blue Protocol is an upcoming action MMORPG developed by Bandai
+              Namco Entertainment, featuring vibrant, anime-inspired graphics
+              and fast-paced combat. Release date: global release in Q4 2024
+            </p>
+          </li>
+          <img
+            src="{{url_for('static', filename = 'img/image3.png')}}"
+            alt="logo"
+          />
         </ul>
-    </div>
+      </div>
+    </section> -->
 
-                                                                        <!-- Ігри та персонажі -->
-    <div class="four_set">
+    <!-- <section>
+      <div class="four_set container">
         <h3>Game</h3>
         <h5>Popular Wiki Pages in Games</h5>
         <ul class="stuck_four_person">
-            <li>
-                <img src="{{url_for('static', filename = 'img/person1.png')}}" alt="logo">
-                <p>Bunny
-                    game: The First Descendant</p>
-            </li>
-            <li>
-                <img src="{{url_for('static', filename = 'img/person2.png')}}" alt="logo">
-                <p>Link
-                    game: zelda</p>
-            </li>
-            <li>
-                <img src="{{url_for('static', filename = 'img/person3.png')}}" alt="logo">
-                <p>Artyom
-                    game: Metro 2033</p>
-            </li>
-            <li>
-                <img src="{{url_for('static', filename = 'img/person4.png')}}" alt="logo">
-                <p>Raiden
-                    game: genshin impact</p>
-            </li>
-            <li>
-                <img src="{{url_for('static', filename = 'img/person5.png')}}" alt="logo">
-                <p>Marked
-                    game: S.t.a.l.k.e.r</p>
-            </li>
+          <li>
+            <img
+              src="{{url_for('static', filename = 'img/person1.png')}}"
+              alt="logo"
+            />
+            <p>Bunny game: The First Descendant</p>
+          </li>
+          <li>
+            <img
+              src="{{url_for('static', filename = 'img/person2.png')}}"
+              alt="logo"
+            />
+            <p>Link game: zelda</p>
+          </li>
+          <li>
+            <img
+              src="{{url_for('static', filename = 'img/person3.png')}}"
+              alt="logo"
+            />
+            <p>Artyom game: Metro 2033</p>
+          </li>
+          <li>
+            <img
+              src="{{url_for('static', filename = 'img/person4.png')}}"
+              alt="logo"
+            />
+            <p>Raiden game: genshin impact</p>
+          </li>
+          <li>
+            <img
+              src="{{url_for('static', filename = 'img/person5.png')}}"
+              alt="logo"
+            />
+            <p>Marked game: S.t.a.l.k.e.r</p>
+          </li>
         </ul>
 
         <ul class="stuck_four">
-            <li>
-                <h3>The First Descendant:</h3>
-                <p>
-                    The First Descendant is a co-op looter-shooter with RPG elements developed by Nexon.
-                     Players take on the role of "Descendants" — defenders of humanity who have received
-                     supernatural abilities and technologically advanced exoskeletons.
-                </p>
-            </li>
-            <img src="{{url_for('static', filename = 'img/image2.png')}}" alt="logo">
-            <li>
-                <h3>METRO 2033 EXODUS:</h3>
-                <p>
-                    Metro Exodus is a first-person shooter with elements of survival horror and stealth,
-                     developed by the studio 4A Games.
-                     The game is the third part of the series based on the books of Dmytro Hlukhovsky.
-                </p>
-            </li>
-            <img src="{{url_for('static', filename = 'img/image1.png')}}" alt="logo">
+          <li>
+            <h3>The First Descendant:</h3>
+            <p>
+              The First Descendant is a co-op looter-shooter with RPG elements
+              developed by Nexon. Players take on the role of "Descendants" —
+              defenders of humanity who have received supernatural abilities and
+              technologically advanced exoskeletons.
+            </p>
+          </li>
+          <img
+            src="{{url_for('static', filename = 'img/image2.png')}}"
+            alt="logo"
+          />
+          <li>
+            <h3>METRO 2033 EXODUS:</h3>
+            <p>
+              Metro Exodus is a first-person shooter with elements of survival
+              horror and stealth, developed by the studio 4A Games. The game is
+              the third part of the series based on the books of Dmytro
+              Hlukhovsky.
+            </p>
+          </li>
+          <img
+            src="{{url_for('static', filename = 'img/image1.png')}}"
+            alt="logo"
+          />
         </ul>
-    </div>
+      </div>
+    </section> -->
 
-    <div class="finsh">
-        <div class="image">
-
-            <img src="{{url_for('static', filename = 'img/image.png')}}" alt="logo">
+    <!-- <footer>
+        <div class="footer container">
+          <div class="image">
+            <img
+              src="{{url_for('static', filename = 'img/image.png')}}"
+              alt="logo"
+            />
             <div calss="image_two">
-                <p>Follow Us</p>
-                <img src="{{url_for('static', filename = 'img/icon4.png')}}" alt="logo">
-                <img src="{{url_for('static', filename = 'img/icon3.png')}}" alt="logo">
-                <img src="{{url_for('static', filename = 'img/icon2.png')}}" alt="logo">
-                <img src="{{url_for('static', filename = 'img/icon1.png')}}" alt="logo">
+              <p>Follow Us</p>
+              <img
+                src="{{url_for('static', filename = 'img/icon4.png')}}"
+                alt="logo"
+              />
+              <img
+                src="{{url_for('static', filename = 'img/icon3.png')}}"
+                alt="logo"
+              />
+              <img
+                src="{{url_for('static', filename = 'img/icon2.png')}}"
+                alt="logo"
+              />
+              <img
+                src="{{url_for('static', filename = 'img/icon1.png')}}"
+                alt="logo"
+              />
             </div>
-        </div>
-        <ul class="stuck_five">
+          </div>
+          <ul class="stuck_five">
             <p>Community</p>
             <li>
-                <p> Community Central </p>
-                <p> Support </p>
-                <p> Help </p>
+              <p>Community Central</p>
+              <p>Support</p>
+              <p>Help</p>
             </li>
             <p>Overview</p>
             <li>
-                <p> What is GameWik? </p>
-                <p> About </p>
-                <p> Careers </p>
-                <p> Press </p>
-                <p> Contact </p>
-                <p> Terms of Use </p>
-                <p> Privacy Policy </p>
-                <p> Digital Services Act </p>
-                <p> Global Sitemap </p>
+              <p>What is GameWik?</p>
+              <p>About</p>
+              <p>Careers</p>
+              <p>Press</p>
+              <p>Contact</p>
+              <p>Terms of Use</p>
+              <p>Privacy Policy</p>
+              <p>Digital Services Act</p>
+              <p>Global Sitemap</p>
             </li>
             <p>Advertise</p>
             <li>
-                <p> Media Kit </p>
-                <p> Contact </p>
-            </li> 
-        </ul>
+              <p>Media Kit</p>
+              <p>Contact</p>
+            </li>
+          </ul>
 
-        <div class="finilin">
+          <div class="finilin">
             <p>
-                ⓒ
-                2024. GameWik. All Righs Reserved.
-                Privacy policy
-                Legal info
-                Cookie Declaration
-                Security
+              ⓒ 2024. GameWik. All Righs Reserved. Privacy policy Legal info
+              Cookie Declaration Security
             </p>
+          </div>
         </div>
-
-    </div>
-
-
-</div>    
-
-</body>
+    </footer> -->
+  </body>
 </html>
